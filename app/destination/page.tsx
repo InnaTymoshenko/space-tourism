@@ -1,8 +1,10 @@
-'use client'
+'us client'
 
 import { SCREEN_SIZES, useScreenSize } from '@/utils/hook'
 
-export default function Home() {
+type Props = {}
+
+const DestinationPage = (props: Props) => {
 	const screenSize = useScreenSize()
 
 	return (
@@ -31,3 +33,5 @@ export default function Home() {
 		</section>
 	)
 }
+
+export default DestinationPage

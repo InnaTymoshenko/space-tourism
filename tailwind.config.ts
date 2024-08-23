@@ -31,23 +31,31 @@ const config: Config = {
 			lg: '1rem',
 			full: '9999px'
 		},
+		fontFamily: {
+			sans: 'Barlow Condensed, sans-serif',
+			mono: 'Bellefair, sans-serif'
+		},
 		fontSize: {
 			us: ['10px', '12px'],
 			sm: ['12px', '16px'],
 			md: ['14px', '20px'],
 			lg: ['16px', '24px'],
 			xl: ['20px', '24px'],
-			'2xl': ['24px', '28px'],
-			'3xl': ['30px', '36px'],
+			'2xl': ['22px', '32px'],
+			'3xl': ['28px', '36px'],
 			'4xl': ['40px', '40px'],
-			'5xl': ['48px', '48px']
+			'5xl': ['11rem', '13rem']
 		},
 		colors: {
 			red: {
 				100: 'hsl(14, 86%, 42%)'
 			},
-			green: {
-				100: 'hsl(159, 69%, 38%)'
+			white: '#fff',
+			gray: {
+				25: 'hsl(231, 100%, 99%)',
+				50: 'hsl(217, 100%, 97%)',
+				100: 'hsl(229, 24%, 87%)',
+				200: 'hsl(231, 11%, 63%)'
 			},
 			rose: {
 				50: 'hsl(20, 50%, 98%)',
@@ -84,6 +92,9 @@ const config: Config = {
 				'technology-desktop': "url('/assets/technology/background-technology-desktop.jpg')",
 				'technology-tablet': "url('/assets/technology/background-technology-tablet.jpg')",
 				'technology-mobile': "url('/assets/technology/background-technology-mobile.jpg')"
+			},
+			boxShadow: {
+				'3xl': '0px 0px 10px 80px hsl(0, 0.4%, 54%, 36%)'
 			}
 		}
 	},
