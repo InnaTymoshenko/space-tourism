@@ -7,7 +7,9 @@ import { VariantProps, cva } from 'class-variance-authority'
 import { cn } from '@/utils/cn'
 
 export const tabStyles = cva(
-	['h-full flex gap-2 justify- border-transpatent items-center tracking-widest text-xl text-white'],
+	[
+		'h-full flex gap-2 justify-between border-b-4 border-transparent hover:border-b-white/30 items-center tracking-widest text-xl text-white px-2'
+	],
 	{
 		variants: {
 			selected: {
@@ -30,22 +32,33 @@ NavTab.displayName = 'NavTab'
 
 interface NavTabsProps extends React.HTMLAttributes<HTMLDivElement> {
 	items: { title: string; href: string }[]
+	mobile: boolean
+	setMobile: (a: boolean) => void
 }
 
-const NavTabs = ({ className, children, items, ...props }: NavTabsProps) => {
+const NavTabs = ({ className, children, items, mobile, setMobile, ...props }: NavTabsProps) => {
 	const segment = useSelectedLayoutSegment()
 	const pathname = usePathname()
 
 	return (
-		<div className={cn('w-full h-full flex justify-between items-center', className)} {...props}>
+		<div
+			className={cn(
+				`w-full h-full flex  ${
+					mobile ? 'flex-col justify-start items-start pl-12 pt-20' : 'flex-row  justify-between items-center'
+				} `,
+				className
+			)}
+			{...props}
+		>
 			{items.map((item, index) => {
 				return (
-					<div key={item.title} className="flex gap-4 h-full items-center">
+					<div key={item.title} className={`flex gap-4 items-center ${mobile ? 'h-20' : 'h-full'}`}>
 						<NavTab
+							onClick={() => setMobile(false)}
 							href={item.href}
 							selected={segment === null ? item.href === pathname : item.href.includes(String(segment))}
 						>
-							<span className="font-medium">{`0${index}`}</span>
+							<span className="lg:block md2:hidden font-medium">{`0${index}`}</span>
 							<span className="font-thin">{item.title.toUpperCase()}</span>
 						</NavTab>
 					</div>

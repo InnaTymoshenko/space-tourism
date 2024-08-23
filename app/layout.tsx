@@ -23,7 +23,7 @@ export default function RootLayout({
 			<body className={barlow.className}>
 				<div className="w-full h-screen relative">
 					<Header />
-					<main>{children}</main>
+					<main className="w-full h-full">{children}</main>
 				</div>
 			</body>
 		</html>
