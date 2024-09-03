@@ -1,23 +1,26 @@
 'use client'
 
 import { SCREEN_SIZES, useScreenSize } from '@/utils/hook'
+import data from '@/data/data.json'
+import { DestinationTabs } from '@/components/destination-tab'
 
 type Props = {}
 
 const DestinationPage = (props: Props) => {
 	const screenSize = useScreenSize()
+	const planets = data.destinations
 
 	return (
 		<section
-			className={`w-full h-screen ${
+			className={`w-full ${
 				screenSize === SCREEN_SIZES.MOBILE
-					? 'bg-dest-mobile'
+					? 'bg-dest-mobile h-[170vh]'
 					: screenSize === SCREEN_SIZES.TABLET
-					? 'bg-dest-tablet'
-					: 'bg-dest-desktop'
+					? 'bg-dest-tablet h-[180vh]'
+					: 'bg-dest-desktop h-screen'
 			}`}
 		>
-			<div className="shell flex justify-between items-end px-8 pb-32"></div>
+			<DestinationTabs items={planets} />
 		</section>
 	)
 }

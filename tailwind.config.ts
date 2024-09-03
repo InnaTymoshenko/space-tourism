@@ -40,10 +40,11 @@ const config: Config = {
 			sm: ['12px', '16px'],
 			md: ['14px', '20px'],
 			lg: ['16px', '24px'],
-			xl: ['20px', '24px'],
-			'2xl': ['22px', '32px'],
-			'3xl': ['28px', '36px'],
-			'4xl': ['40px', '40px'],
+			xl: ['20px', '28px'],
+			'2xl': ['26px', '36px'],
+			'3xl': ['34px', '46px'],
+			'3.5xl': ['5rem', '6rem'],
+			'4xl': ['9rem', '8rem'],
 			'5xl': ['11rem', '13rem']
 		},
 		colors: {

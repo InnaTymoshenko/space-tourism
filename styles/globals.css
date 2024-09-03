@@ -28,11 +28,17 @@
 		font-weight: 400;
 		font-style: normal;
 	}
+
+	h2 {
+		font-family: 'Barlow Condensed', serif;
+		font-weight: 100;
+		font-style: normal;
+	}
 }
 
 @layer components {
 	.shell {
-		@apply w-full max-w-[1440px] h-full mx-auto;
+		@apply w-full max-w-[1440px] h-full mx-auto lg:px-8 sx:px-2;
 	}
 
 	.header::before {
@@ -45,6 +51,10 @@
 		background-color: rgba(255, 255, 255, 0.014);
 		backdrop-filter: blur(30px);
 		z-index: -1;
+	}
+
+	.description {
+		@apply lg:text-xl sx:text-xl text-gray-25 font-light tracking-widest lg:text-left sx:text-center md2:px-6 sx:px-0 lg:px-0;
 	}
 
 	@media screen and (min-width: 768px) and (max-width: 1022px) {
