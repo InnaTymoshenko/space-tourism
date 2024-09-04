@@ -75,7 +75,7 @@ const DestinationTabs = ({ className, children, items, ...props }: DestinationTa
 	}, [items, title])
 
 	return (
-		<div className="shell flex lg:flex-row-reverse sx:flex-col-reverse lg:justify-between sx:justify-end gap-8 lg:items-end sx:items-center 3xl:pb-20 sx:pb-8 lg:pt-[13rem] sx:pt-[6rem]">
+		<div className="shell flex lg:flex-row-reverse sx:flex-col-reverse lg:justify-between sx:justify-end gap-8 lg:items-end sx:items-center 3xl:pb-20 sx:pb-8 lg:pt-[13rem] sx:pt-[8rem]">
 			<div className="lg:w-[40%] sx:w-full sx:px-4 flex flex-col justify-between sx:items-center tracking-wider lg:m-4 sx:m-0 ">
 				<div className="w-full h-12 flex md2:gap-10 sx:gap-4 sx:justify-center lg:justify-start mb-8">
 					{items.map(item => (
@@ -102,7 +102,7 @@ const DestinationTabs = ({ className, children, items, ...props }: DestinationTa
 					</div>
 				</div>
 			</div>
-			<div className="lg:w-[45%] sx:w-full lg:mx-0 flex flex-col items-start  md2:gap-20 sx:gap-12 lg:pl-16 sx:px-6 py-4">
+			<div className="lg:w-[45%] sx:w-full h-full lg:mx-0 flex flex-col justify-between items-start  md2:gap-20 sx:gap-12 lg:pl-16 sx:px-6 py-4">
 				<h2 className="text-white md2:text-2xl sx:text-lg tracking-widest uppercase">
 					<strong className="text-gray-200/50 font-semibold mr-4">01</strong>Pick your destination
 				</h2>

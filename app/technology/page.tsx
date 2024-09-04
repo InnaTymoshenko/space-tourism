@@ -1,15 +1,18 @@
 'use client'
 
 import { SCREEN_SIZES, useScreenSize } from '@/utils/hook'
+import { TechnologyTabs } from '@/components/technology-tab'
+import data from '@/data/data.json'
 
 type Props = {}
 
 const TechnologyPage = (props: Props) => {
 	const screenSize = useScreenSize()
+	const technology: ITechnology[] = data.technology
 
 	return (
 		<section
-			className={`w-full h-screen ${
+			className={`w-full  min-h-[100vh] ${
 				screenSize === SCREEN_SIZES.MOBILE
 					? 'bg-technology-mobile'
 					: screenSize === SCREEN_SIZES.TABLET
@@ -17,7 +20,7 @@ const TechnologyPage = (props: Props) => {
 					: 'bg-technology-desktop'
 			}`}
 		>
-			<div className="shell flex justify-between items-end px-8 pb-32"></div>
+			<TechnologyTabs items={technology} />
 		</section>
 	)
 }

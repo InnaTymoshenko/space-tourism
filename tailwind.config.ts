@@ -41,7 +41,7 @@ const config: Config = {
 			md: ['14px', '20px'],
 			lg: ['16px', '24px'],
 			xl: ['20px', '28px'],
-			'2xl': ['26px', '36px'],
+			'2xl': ['30px', '36px'],
 			'3xl': ['34px', '46px'],
 			'3.5xl': ['5rem', '6rem'],
 			'4xl': ['9rem', '8rem'],
