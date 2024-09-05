@@ -39,7 +39,7 @@ const config: Config = {
 			us: ['10px', '12px'],
 			sm: ['12px', '16px'],
 			md: ['14px', '20px'],
-			lg: ['16px', '24px'],
+			lg: ['17px', '24px'],
 			xl: ['20px', '28px'],
 			'2xl': ['30px', '36px'],
 			'3xl': ['34px', '46px'],

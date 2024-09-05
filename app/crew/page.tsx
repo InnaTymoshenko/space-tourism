@@ -1,15 +1,18 @@
 'use client'
 
 import { SCREEN_SIZES, useScreenSize } from '@/utils/hook'
+import { CrewTabs } from '@/components/crew-tab'
+import data from '@/data/data.json'
 
 type Props = {}
 
 const CrewPage = (props: Props) => {
 	const screenSize = useScreenSize()
+	const crews: ICrew[] = data.crew
 
 	return (
 		<section
-			className={`w-full h-screen ${
+			className={`w-full min-h-[100vh] ${
 				screenSize === SCREEN_SIZES.MOBILE
 					? 'bg-crew-mobile'
 					: screenSize === SCREEN_SIZES.TABLET
@@ -17,7 +20,7 @@ const CrewPage = (props: Props) => {
 					: 'bg-crew-desktop'
 			}`}
 		>
-			<div className="shell flex justify-between items-end px-8 pb-32"></div>
+			<CrewTabs items={crews} />
 		</section>
 	)
 }
