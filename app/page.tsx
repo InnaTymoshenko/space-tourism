@@ -1,6 +1,7 @@
 'use client'
 
 import { SCREEN_SIZES, useScreenSize } from '@/utils/hook'
+import Link from 'next/link'
 
 export default function Home() {
 	const screenSize = useScreenSize()
@@ -28,8 +29,13 @@ export default function Home() {
 						of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this world experience!
 					</p>
 				</div>
-				<div className="lg:w-[300px] lg:h-[300px] sx:w-[200px] md2:w-[250px] md2:h-[250px] sx:h-[200px] rounded-full bg-white flex justify-center items-center text-gray-50 text-3xl font-mono tracking-wider m-4 hover:shadow-3xl transition-shadow duration-500 ease-in-out">
-					EXPLORE
+				<div className="lg:w-[300px] lg:h-[300px] sx:w-[200px] md2:w-[250px] md2:h-[250px] sx:h-[200px] rounded-full bg-white m-4 hover:shadow-3xl transition-shadow duration-500 ease-in-out">
+					<Link
+						href={'/destination'}
+						className="w-full h-full  flex justify-center items-center text-gray-50 text-2xl font-mono tracking-wider"
+					>
+						EXPLORE
+					</Link>
 				</div>
 			</div>
 		</section>

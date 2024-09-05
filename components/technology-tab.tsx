@@ -35,7 +35,14 @@ interface TechnologyTabsProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const TechnologyTabs = ({ className, children, items, ...props }: TechnologyTabsProps) => {
 	const [title, setTitle] = useState('')
-	const [technology, setTechnology] = useState<ITechnology>()
+	const [technology, setTechnology] = useState<ITechnology>({
+		name: '',
+		images: {
+			portrait: '',
+			landscape: ''
+		},
+		description: ''
+	})
 	const screenSize = useScreenSize()
 
 	const handleTechnologyTitle = (value: React.SetStateAction<string> | null) => {
@@ -46,21 +53,21 @@ const TechnologyTabs = ({ className, children, items, ...props }: TechnologyTabs
 
 	useEffect(() => {
 		if (title) {
-			const technology = items.find(t => t.name === title)
+			const technology = items.find(t => t.name.toLowerCase() === title.toLowerCase())
 			if (technology) {
 				setTechnology(technology)
 			} else {
 				setTechnology({
-					name: 'Launch vehicle',
+					name: items[0].name,
 					images: {
-						portrait: './assets/technology/image-launch-vehicle-portrait.jpg',
-						landscape: './assets/technology/image-launch-vehicle-landscape.jpg'
+						portrait: items[0].images.portrait,
+						landscape: items[0].images.landscape
 					},
-					description: `A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!`
+					description: items[0].description
 				})
 			}
 		} else {
-			setTitle('Launch vehicle')
+			setTitle(items[0].name.toLowerCase())
 		}
 	}, [items, title])
 
@@ -83,11 +90,13 @@ const TechnologyTabs = ({ className, children, items, ...props }: TechnologyTabs
 						</div>
 						<div className="lg:w-[30%] sx:w-full flex lg:flex-col sx:flex-row justify-center gap-8">
 							{items.map((item, index) => (
-								<div className="h-full uppercase" key={item.name}>
+								<div className="h-full uppercase" key={item.name.replace(/ /g, '-')}>
 									<TechnologyTab
 										onClick={e => handleTechnologyTitle(item.name)}
 										selected={
-											title === '' ? item.name.toLowerCase() === 'Launch vehicle' : item.name.includes(String(title))
+											title === ''
+												? item.name.toLowerCase() === items[0].name.toLowerCase()
+												: item.name.toLowerCase().includes(String(title).toLowerCase())
 										}
 									>
 										{index + 1}

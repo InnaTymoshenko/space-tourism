@@ -53,43 +53,46 @@ const DestinationTabs = ({ className, children, items, ...props }: DestinationTa
 
 	useEffect(() => {
 		if (title) {
-			const planet = items.find(pl => pl.name === title)
+			const planet = items.find(pl => pl.name.toLowerCase() === title.toLowerCase())
 			if (planet) {
 				setPlanet(planet)
 			} else {
 				setPlanet({
-					name: 'Moon',
+					name: items[0].name,
 					images: {
-						png: './assets/destination/image-moon.png',
-						webp: './assets/destination/image-moon.webp'
+						png: items[0].images.png,
+						webp: items[0].images.webp
 					},
-					description:
-						'See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites',
-					distance: '384,400 km',
-					travel: '3 days'
+					description: items[0].description,
+					distance: items[0].distance,
+					travel: items[0].travel
 				})
 			}
 		} else {
-			setTitle('Moon')
+			setTitle(items[0].name)
 		}
 	}, [items, title])
 
 	return (
 		<div className="shell flex lg:flex-row-reverse sx:flex-col-reverse lg:justify-between sx:justify-end gap-8 lg:items-end sx:items-center 3xl:pb-20 sx:pb-8 lg:pt-[13rem] sx:pt-[8rem]">
-			<div className="lg:w-[40%] sx:w-full sx:px-4 flex flex-col justify-between sx:items-center tracking-wider lg:m-4 sx:m-0 ">
+			<div className="lg:w-[40%] sx:w-[90%] sx:px-4 flex flex-col justify-between sx:items-center tracking-wider lg:m-4 sx:m-auto ">
 				<div className="w-full h-12 flex md2:gap-10 sx:gap-4 sx:justify-center lg:justify-start mb-8">
 					{items.map(item => (
 						<div className="h-full uppercase" key={item.distance}>
 							<DestinationTab
 								onClick={e => handlePlanetName(e.currentTarget.textContent)}
-								selected={title === '' ? item.name.toLowerCase() === 'moon' : item.name.includes(String(title))}
+								selected={
+									title === ''
+										? item.name.toLowerCase() === items[0].name.toLowerCase()
+										: item.name.toLowerCase().includes(String(title).toLowerCase())
+								}
 							>
 								{item.name}
 							</DestinationTab>
 						</div>
 					))}
 				</div>
-				<h1 className="xl:text-4xl sx:text-3.5xl  text-white tracking-wider uppercase mb-4">{planet.name}</h1>
+				<h1 className="xl:text-[7rem] sx:text-3.5xl  text-white tracking-wider uppercase mb-4">{planet.name}</h1>
 				<p className="description mb-8">{planet.description}</p>
 				<div className="w-full border-t-2 border-t-gray-200 flex lg:flex-row sx:flex-col justify-between items-center gap-8 text-white pt-8">
 					<div className="lg:w-[50%] sx:w-full flex flex-col lg:items-start sx:items-center gap-4 uppercase tracking-widest">

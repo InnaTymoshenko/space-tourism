@@ -34,7 +34,15 @@ interface CrewTabsProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const CrewTabs = ({ className, children, items, ...props }: CrewTabsProps) => {
 	const [title, setTitle] = useState('')
-	const [crew, setCrew] = useState<ICrew>()
+	const [crew, setCrew] = useState<ICrew>({
+		name: '',
+		images: {
+			png: '',
+			webp: ''
+		},
+		role: '',
+		bio: ''
+	})
 
 	const handleCrewTitle = (value: React.SetStateAction<string> | null) => {
 		if (value) {
@@ -44,22 +52,22 @@ const CrewTabs = ({ className, children, items, ...props }: CrewTabsProps) => {
 
 	useEffect(() => {
 		if (title) {
-			const crew = items.find(c => c.name === title)
+			const crew = items.find(c => c.name.toLowerCase() === title.toLowerCase())
 			if (crew) {
 				setCrew(crew)
 			} else {
 				setCrew({
-					name: 'Douglas Hurley',
+					name: items[0].name,
 					images: {
-						png: './assets/crew/image-douglas-hurley.png',
-						webp: './assets/crew/image-douglas-hurley.webp'
+						png: items[0].images.png,
+						webp: items[0].images.webp
 					},
-					role: 'Commander',
-					bio: `Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.`
+					role: items[0].role,
+					bio: items[0].bio
 				})
 			}
 		} else {
-			setTitle('Douglas Hurley')
+			setTitle(items[0].name.toLowerCase())
 		}
 	}, [items, title])
 
@@ -84,11 +92,13 @@ const CrewTabs = ({ className, children, items, ...props }: CrewTabsProps) => {
 						</div>
 						<div className="w-full flex lg:justify-start sx:justify-center gap-6">
 							{items.map((item, index) => (
-								<div className="h-full uppercase" key={item.name}>
+								<div className="h-full uppercase" key={item.name.replace(/ /g, '-')}>
 									<CrewTab
 										onClick={e => handleCrewTitle(item.name)}
 										selected={
-											title === '' ? item.name.toLowerCase() === 'Douglas Hurley' : item.name.includes(String(title))
+											title === ''
+												? item.name.toLowerCase() === items[0].name.toLowerCase()
+												: item.name.toLowerCase().includes(String(title).toLowerCase())
 										}
 									></CrewTab>
 								</div>
