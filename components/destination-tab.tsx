@@ -2,6 +2,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { VariantProps, cva } from 'class-variance-authority'
 import { cn } from '@/utils/cn'
 
@@ -110,7 +111,18 @@ const DestinationTabs = ({ className, children, items, ...props }: DestinationTa
 					<strong className="text-gray-200/50 font-semibold mr-4">01</strong>Pick your destination
 				</h2>
 				<div className="w-full h-[70%] flex lg:justify-end sx:justify-center">
-					<img src={planet.images.png} alt={'moon'} className="w-auto h-auto" />
+					<motion.img
+						src={planet.images.png}
+						alt={'moon'}
+						className="w-auto h-auto"
+						animate={{ rotate: 360 }}
+						transition={{
+							ease: 'linear',
+							repeat: Infinity,
+							duration: 10,
+							repeatType: 'loop'
+						}}
+					/>
 				</div>
 			</div>
 		</div>

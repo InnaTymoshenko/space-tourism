@@ -1,7 +1,8 @@
 'use client'
 
-import { SCREEN_SIZES, useScreenSize } from '@/utils/hook'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { SCREEN_SIZES, useScreenSize } from '@/utils/hook'
 
 export default function Home() {
 	const screenSize = useScreenSize()
