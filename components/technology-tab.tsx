@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react'
 import { VariantProps, cva } from 'class-variance-authority'
 import { cn } from '@/utils/cn'
-import { useScreenSize, SCREEN_SIZES } from '@/utils/hook'
+import { TechnologyImage } from './technology-image'
 
 export const technologyStyles = cva(
 	[
@@ -43,7 +43,6 @@ const TechnologyTabs = ({ className, children, items, ...props }: TechnologyTabs
 		},
 		description: ''
 	})
-	const screenSize = useScreenSize()
 
 	const handleTechnologyTitle = (value: React.SetStateAction<string> | null) => {
 		if (value) {
@@ -106,13 +105,7 @@ const TechnologyTabs = ({ className, children, items, ...props }: TechnologyTabs
 						</div>
 					</div>
 				</div>
-				<div className="lg:w-[40%] sx:w-full">
-					<img
-						src={screenSize === SCREEN_SIZES.PC ? technology?.images.portrait : technology?.images.landscape}
-						alt={technology?.name}
-						className="w-full h-auto"
-					/>
-				</div>
+				<TechnologyImage items={items} name={technology.name} />
 			</div>
 		</div>
 	)
