@@ -46,6 +46,18 @@ const DestinationTabs = ({ className, children, items, ...props }: DestinationTa
 		travel: ''
 	})
 
+	const planetAnimation = {
+		hidden: {
+			opacity: 0,
+			scale: 0.3
+		},
+		visible: {
+			opacity: 1,
+			scale: 1,
+			transition: { duration: 3 }
+		}
+	}
+
 	const handlePlanetName = (value: React.SetStateAction<string> | null) => {
 		if (value) {
 			setTitle(value)
@@ -76,7 +88,10 @@ const DestinationTabs = ({ className, children, items, ...props }: DestinationTa
 
 	return (
 		<div className="shell flex lg:flex-row-reverse sx:flex-col-reverse lg:justify-between sx:justify-end gap-8 lg:items-end sx:items-center 3xl:pb-20 sx:pb-8 lg:pt-[13rem] sx:pt-[8rem]">
-			<div className="lg:w-[40%] sx:w-[90%] sx:px-4 flex flex-col justify-between sx:items-center tracking-wider lg:m-4 sx:m-auto ">
+			<motion.div
+				variants={planetAnimation}
+				className="lg:w-[40%] sx:w-[90%] sx:px-4 flex flex-col justify-between sx:items-center tracking-wider lg:m-4 sx:m-auto "
+			>
 				<div className="w-full h-12 flex md2:gap-10 sx:gap-4 sx:justify-center lg:justify-start mb-8">
 					{items.map(item => (
 						<div className="h-full uppercase" key={item.distance}>
@@ -93,19 +108,37 @@ const DestinationTabs = ({ className, children, items, ...props }: DestinationTa
 						</div>
 					))}
 				</div>
-				<h1 className="xl:text-[7rem] sx:text-3.5xl  text-white tracking-wider uppercase mb-4">{planet.name}</h1>
-				<p className="description mb-8">{planet.description}</p>
-				<div className="w-full border-t-2 border-t-gray-200 flex lg:flex-row sx:flex-col justify-between items-center gap-8 text-white pt-8">
-					<div className="lg:w-[50%] sx:w-full flex flex-col lg:items-start sx:items-center gap-4 uppercase tracking-widest">
-						<span className=" text-lg text-gray-25">Avg. distance</span>
-						<span className="text-3xl font-light">{planet.distance}</span>
-					</div>
-					<div className="lg:w-[50%] sx:w-full flex flex-col lg:items-start sx:items-center gap-4 uppercase tracking-widest">
-						<span className=" text-lg text-gray-25">Est. travel time</span>
-						<span className="text-3xl font-light">{planet.travel}</span>
-					</div>
-				</div>
-			</div>
+				{items.map(item => {
+					if (item.name.toLowerCase() === planet.name.toLowerCase()) {
+						return (
+							<motion.div initial={'hidden'} whileInView={'visible'} key={item.name} className="w-full h-auto">
+								<motion.h1
+									variants={planetAnimation}
+									className="xl:text-[7rem] sx:text-3.5xl  text-white tracking-wider uppercase mb-4"
+								>
+									{planet.name}
+								</motion.h1>
+								<motion.p variants={planetAnimation} className="description mb-8">
+									{planet.description}
+								</motion.p>
+								<motion.div
+									variants={planetAnimation}
+									className="w-full border-t-2 border-t-gray-200 flex lg:flex-row sx:flex-col justify-between items-center gap-8 text-white pt-8"
+								>
+									<div className="lg:w-[50%] sx:w-full flex flex-col lg:items-start sx:items-center gap-4 uppercase tracking-widest">
+										<span className=" text-lg text-gray-25">Avg. distance</span>
+										<span className="text-3xl font-light">{planet.distance}</span>
+									</div>
+									<div className="lg:w-[50%] sx:w-full flex flex-col lg:items-start sx:items-center gap-4 uppercase tracking-widest">
+										<span className=" text-lg text-gray-25">Est. travel time</span>
+										<span className="text-3xl font-light">{planet.travel}</span>
+									</div>
+								</motion.div>
+							</motion.div>
+						)
+					}
+				})}
+			</motion.div>
 			<div className="lg:w-[45%] sx:w-full h-full lg:mx-0 flex flex-col justify-between items-start  md2:gap-20 sx:gap-12 lg:pl-16 sx:px-6 py-4">
 				<h2 className="text-white md2:text-2xl sx:text-lg tracking-widest uppercase">
 					<strong className="text-gray-200/50 font-semibold mr-4">01</strong>Pick your destination

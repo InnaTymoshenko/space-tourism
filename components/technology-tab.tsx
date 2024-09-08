@@ -2,9 +2,11 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { VariantProps, cva } from 'class-variance-authority'
 import { cn } from '@/utils/cn'
 import { TechnologyImage } from './technology-image'
+import { div } from 'framer-motion/client'
 
 export const technologyStyles = cva(
 	[
@@ -80,16 +82,43 @@ const TechnologyTabs = ({ className, children, items, ...props }: TechnologyTabs
 			<div className="w-full flex lg:flex-row sx:flex-col-reverse justify-between items-center pb-8 gap-8">
 				<div className="lg:w-[60%] sx:w-full lg:mx-0 h-full flex lg:flex-col justify-between items-start md2:gap-20 sx:gap-12 lg:pl-16 sx:px-6 pt-4">
 					<div className="w-full flex lg:flex-row-reverse sx:flex-col-reverse md2:gap-16 sx:gap-8">
-						<div className="flex flex-col justify-center sx:items-center lg:items-start gap-2 pt-4">
-							<p className="description uppercase mb-6">The terminology...</p>
-							<h1 className="2xl:text-[3.5rem] md2:text-[2.5rem] sx:text-2xl font-thin text-white tracking-wider uppercase mb-4">
-								{technology?.name}
-							</h1>
-							<p className="description mb-8 lg:pr-[4.75rem] ">{technology?.description}</p>
-						</div>
+						{items.map(item => {
+							if (item.name.toLowerCase().replace(/ /g, '-') === technology.name.toLowerCase().replace(/ /g, '-')) {
+								return (
+									<motion.div
+										key={item.name}
+										className="flex flex-col justify-center sx:items-center lg:items-start gap-2 pt-4"
+										initial={{ opacity: 0, scale: 0.5 }}
+										animate={{ opacity: 1, scale: 1 }}
+										transition={{
+											duration: 2,
+											delay: 0.5,
+											ease: [0, 0.71, 0.2, 1.01]
+										}}
+									>
+										<p className="description uppercase mb-6">The terminology...</p>
+										<h1 className="2xl:text-[3.5rem] md2:text-[2.5rem] sx:text-2xl font-thin text-white tracking-wider uppercase mb-4">
+											{technology?.name}
+										</h1>
+										<p className="description mb-8 lg:pr-[4.75rem] ">{technology?.description}</p>
+									</motion.div>
+								)
+							}
+						})}
+
 						<div className="lg:w-[30%] sx:w-full flex lg:flex-col sx:flex-row justify-center gap-8">
 							{items.map((item, index) => (
-								<div className="h-full uppercase" key={item.name.replace(/ /g, '-')}>
+								<motion.div
+									className="h-full uppercase"
+									key={item.name.replace(/ /g, '-')}
+									initial={{ opacity: 0, scale: 0.5 }}
+									animate={{ opacity: 1, scale: 1 }}
+									transition={{
+										duration: 1,
+										delay: 0.5,
+										ease: [0, 0.71, 0.2, 1.01]
+									}}
+								>
 									<TechnologyTab
 										onClick={e => handleTechnologyTitle(item.name)}
 										selected={
@@ -100,7 +129,7 @@ const TechnologyTabs = ({ className, children, items, ...props }: TechnologyTabs
 									>
 										{index + 1}
 									</TechnologyTab>
-								</div>
+								</motion.div>
 							))}
 						</div>
 					</div>
