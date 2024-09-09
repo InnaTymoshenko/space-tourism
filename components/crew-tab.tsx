@@ -8,7 +8,7 @@ import { cn } from '@/utils/cn'
 
 export const crewStyles = cva(
 	[
-		'w-[15px] h-[15px] bg-transparent rounded-full flex justify-center items-center text-2xl text-white border-2 border-gray-200 cursor-pointer'
+		'w-[15px] h-[15px] bg-transparent rounded-full flex justify-center items-center text-2xl text-white border-2 border-gray-200 hover:bg-gray-200 cursor-pointer'
 	],
 	{
 		variants: {
