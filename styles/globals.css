@@ -38,7 +38,7 @@
 
 @layer components {
 	.shell {
-		@apply w-full max-w-[1440px] h-full mx-auto lg:px-8 sx:px-0;
+		@apply w-full max-w-[1240px] h-full mx-auto lg:px-8 sx:px-0;
 	}
 
 	.header::before {

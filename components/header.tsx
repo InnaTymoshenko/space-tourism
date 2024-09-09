@@ -13,7 +13,7 @@ const Header = (props: Props) => {
 	const [isMobile, setIsMobile] = useState(false)
 
 	return (
-		<div className="fixed lg:top-16 md2:top-4 w-full h-28 z-50 header">
+		<div className="fixed lg:top-12 md2:top-4 w-full h-28 z-50 header">
 			<div className="shell flex gap-4 justify-between items-center px-8">
 				<Logo />
 				<div className="lg:block sx:hidden w-[40%] h-[1px] bg-gray-100/50"></div>

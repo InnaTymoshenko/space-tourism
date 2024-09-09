@@ -55,7 +55,7 @@ export default function Home() {
 				<div className="lg:w-[45%] md2:w-[80%] sx:w-full md2:mx-auto lg:mx-0 flex flex-col lg:items-start sx:items-center gap-4 sx:pl-2 md:pl-16 py-4">
 					<motion.p
 						variants={mainAnimation}
-						className="lg:text-3xl md:text-2xl sx:text-xl text-gray-25 tracking-[.2em] uppercase font-thin"
+						className="lg:text-2xl md:text-2xl sx:text-xl text-white tracking-[.2em] uppercase font-thin"
 					>
 						So, you want to travel to
 					</motion.p>
@@ -73,7 +73,7 @@ export default function Home() {
 				<motion.div
 					whileHover={{ scale: 0.8 }}
 					variants={starAnimation}
-					className="lg:w-[300px]  lg:h-[300px] sx:w-[200px] md2:w-[250px] md2:h-[250px] sx:h-[200px] rounded-full bg-white m-4 hover:shadow-3xl transition-shadow duration-500 ease-in-out"
+					className="lg:w-[250px] lg:h-[250px] sx:w-[200px] md2:w-[250px] md2:h-[250px] sx:h-[200px] rounded-full bg-white m-4 hover:shadow-3xl transition-shadow duration-500 ease-in-out"
 				>
 					<Link
 						href={'/destination'}
