@@ -54,13 +54,13 @@ export default function Home() {
 			>
 				<div className="lg:w-[45%] md2:w-[80%] sx:w-full md2:mx-auto lg:mx-0 flex flex-col lg:items-start sx:items-center gap-4 sx:pl-2 md:pl-16 py-4">
 					<motion.p
-						variants={mainAnimation}
+						// variants={mainAnimation}
 						className="lg:text-2xl md:text-2xl sx:text-xl text-white tracking-[.2em] uppercase font-thin"
 					>
 						So, you want to travel to
 					</motion.p>
 					<motion.h1
-						variants={mainAnimation}
+						// variants={mainAnimation}
 						className="lg:text-5xl md:text-4xl sx:text-[6rem] sx:leading-none text-white tracking-wider uppercase"
 					>
 						Space
@@ -72,7 +72,7 @@ export default function Home() {
 				</div>
 				<motion.div
 					whileHover={{ scale: 0.8 }}
-					variants={starAnimation}
+					// variants={starAnimation}
 					className="lg:w-[250px] lg:h-[250px] sx:w-[200px] md2:w-[250px] md2:h-[250px] sx:h-[200px] rounded-full bg-white m-4 hover:shadow-3xl transition-shadow duration-500 ease-in-out"
 				>
 					<Link
