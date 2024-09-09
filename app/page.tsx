@@ -19,21 +19,21 @@ export default function Home() {
 			opacity: 1,
 			scale: 1,
 			skew: '0deg, 0deg',
-			transition: { duration: 3 }
+			transition: { duration: 2 }
 		}
 	}
 
 	const starAnimation = {
 		hidden: {
-			x: '100vw',
+			x: '200%',
 			scale: 0.1,
 			opasity: 0
 		},
 		visible: {
 			x: '0',
 			opasity: 1,
-			scale: 1,
-			transition: { duration: 3 }
+			scale: [0, 0.5, 0.8, 1],
+			transition: { duration: 2 }
 		}
 	}
 
