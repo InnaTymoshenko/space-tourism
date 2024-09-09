@@ -97,13 +97,17 @@ const CrewTabs = ({ className, children, items, ...props }: CrewTabsProps) => {
 	}, [items, title])
 
 	return (
-		<div className="shell relative flex flex-col lg:justify-between sx:justify-end lg:gap-4 sx:gap-12 items-start md2:pt-[13rem] sx:pt-[8rem]">
+		<motion.div
+			initial={'hidden'}
+			whileInView={'visible'}
+			className="shell relative flex flex-col lg:justify-between sx:justify-end lg:gap-28 sx:gap-12 items-start md2:pt-[13rem] sx:pt-[8rem]"
+		>
 			<div className="lg:pl-16 sx:px-6">
 				<h2 className="text-white md2:text-2xl sx:text-lg tracking-widest uppercase">
 					<strong className="text-gray-200/50 font-semibold mr-4">02</strong>Meet your crew
 				</h2>
 			</div>
-			<div className="w-full flex lg:flex-row sx:flex-col-reverse justify-between items-center gap-8">
+			<div className="w-full h-full flex lg:flex-row sx:flex-col-reverse justify-between items-center gap-8">
 				<div className="lg:w-[55%] sx:w-full lg:mx-0 h-full flex lg:flex-col flex-wrap justify-between items-start md2:gap-20 sx:gap-12 3xl:pb-20 sx:pb-8  lg:pl-16 sx:px-6 pt-4">
 					<div className="w-full flex lg:flex-col sx:flex-col-reverse md2:gap-16 sx:gap-8">
 						{items.map(item => {
@@ -169,7 +173,7 @@ const CrewTabs = ({ className, children, items, ...props }: CrewTabsProps) => {
 					}
 				})}
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

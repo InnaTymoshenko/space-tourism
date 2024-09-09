@@ -12,7 +12,7 @@ const DestinationPage = (props: Props) => {
 
 	return (
 		<section
-			className={`w-full min-h-[100vh] ${
+			className={`w-full min-h-[100vh]  overflow-hidden ${
 				screenSize === SCREEN_SIZES.MOBILE
 					? 'bg-dest-mobile'
 					: screenSize === SCREEN_SIZES.TABLET
